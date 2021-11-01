@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import { useToast } from "@chakra-ui/toast";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://medi4allbackend.herokuapp.com/");
 
 const SocketContext = createContext();
 
