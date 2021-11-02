@@ -32,7 +32,7 @@ const VideoCallPlayer = () => {
     <div className={classes.videoCallPlayer}>
       {stream && (
         <div className={classes.myVideContainer}>
-          <video playsInline autoPlay ref={myVideoFeed} />
+          <video playsInline autoPlay ref={myVideoFeed} muted/>
           <p className={classes.userName}>{myName}</p>
         </div>
       )}
