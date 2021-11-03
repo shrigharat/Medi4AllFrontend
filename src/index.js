@@ -4,6 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
+
+
+
 
 const medi4AllTheme = extendTheme({
   fonts: {
@@ -27,9 +31,12 @@ const medi4AllTheme = extendTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={medi4AllTheme}>
-      <App />
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider theme={medi4AllTheme}>
+        <App />
+      </ChakraProvider>
+    </BrowserRouter>
+
   </React.StrictMode>,
   document.getElementById("root")
 );

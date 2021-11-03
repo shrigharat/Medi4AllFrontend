@@ -1,13 +1,24 @@
 import CallPage from "./pages/CallPage/CallPage";
 import { SocketProvider } from "./contexts/SocketContext";
 import "./App.css";
+import { Switch, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard/Dashboard";
+
 
 function App() {
   return (
     <div className="App">
-      <SocketProvider>
-        <CallPage />
-      </SocketProvider>
+      <Switch>
+        <Route exact path="/dashboard" component={Dashboard} />
+
+        <Route exact path="/consultation">
+          <SocketProvider>
+            <CallPage />
+          </SocketProvider>
+
+        </Route>
+      </Switch>
+
     </div>
   );
 }
