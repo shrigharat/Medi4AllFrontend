@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/" component={Dashboard} />
 
         <Route exact path="/consultation">
           <SocketProvider>
