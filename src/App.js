@@ -9,16 +9,15 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={Dashboard} />
-
-        <Route exact path="/consultation">
-          <SocketProvider>
-            <CallPage />
-          </SocketProvider>
-
-        </Route>
+		<Route exact path="/call">
+		  <SocketProvider>
+			<CallPage />
+		  </SocketProvider>
+		</Route>
+        <Route exact path="/">
+			<Dashboard />
+		</Route>
       </Switch>
-
     </div>
   );
 }
