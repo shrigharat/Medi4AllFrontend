@@ -7,7 +7,7 @@ import Notifications from "../../components/notifications/Notifications";
 const CallPage = () => {
   return (
     <div className={classes.callPage}>
-      <h3>Consultation</h3>
+      <h3>Consultation Prajakta</h3>
       <VideoCallPlayer />
       <Options />
       <Notifications />
