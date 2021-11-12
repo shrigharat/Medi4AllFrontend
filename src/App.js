@@ -4,6 +4,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import LoginForm from "./forms/login/Login";
+import Registration from "./pages/Registration/Registration";
 
 function App() {
   return (
@@ -21,9 +22,8 @@ function App() {
           <LoginForm />
         </Route>
         <Route exact path="/registration">
-          <LoginForm />
+          <Registration />
         </Route>
-        
       </Switch>
     </div>
   );

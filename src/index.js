@@ -5,14 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
-
-
-
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const medi4AllTheme = extendTheme({
   fonts: {
     heading: "Poppins",
-    body: "Poppins"
+    body: "Poppins",
   },
   colors: {
     med: {
@@ -24,19 +23,20 @@ const medi4AllTheme = extendTheme({
       600: "#9ec574",
       700: "#91bd61",
       800: "#83b44d",
-      900: "#75AC39"
-    }
-  }
+      900: "#75AC39",
+    },
+  },
 });
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ChakraProvider theme={medi4AllTheme}>
-        <App />
-      </ChakraProvider>
-    </BrowserRouter>
-
+    <Provider store={store}>
+      <BrowserRouter>
+        <ChakraProvider theme={medi4AllTheme}>
+          <App />
+        </ChakraProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,40 +1,3 @@
-/* width */
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-
-/* Track */
-
- ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-
-/* Handle */
-
- ::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-
-/* Handle on hover */
-
- ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
 /* section .imgBx{
     position: relative;
     width: 50%;
@@ -58,144 +21,116 @@ section .imgBx img{
 
 } */
 
-section .contentBx {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
+.doctorRegister .inputBx {
+  margin-bottom: 20px;
 }
 
-section .contentBx .formBx {
-    width: 70%;
-    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
-    padding: 3rem 4rem;
-    margin-top: 2rem;
-    height: 80%;
-    overflow-y: scroll;
+.doctorRegister .inputBx span {
+  font-size: var(--form-font-size);
+  margin-bottom: 5px;
+  display: inline-block;
+  color: #2f4858;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
-section .contentBx .formBx h2 {
-    color: black;
-    font-weight: 600;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    border-bottom: 4px solid #75AC3A;
-    display: inline-block;
-    letter-spacing: 1px;
+.doctorRegister .inputBx .custom_select {
+  width: 100%;
+  height: 100%;
 }
 
-section .contentBx .formBx .inputBx {
-    margin-bottom: 20px;
+.doctorRegister .inputBx input {
+  width: 100%;
+  padding: 10px 20px;
+  outline: none;
+  font-weight: 400;
+  border: 1px solid #2f4858;
+  font-size: var(--form-font-size);
+  letter-spacing: 1px;
+  color: #2f4858;
+  background: transparent;
+  border-radius: 5px;
 }
 
-section .contentBx .formBx .inputBx span {
-    font-size: 16px;
-    margin-bottom: 5px;
-    display: inline-block;
-    color: #2F4858;
-    font-weight: 300;
-    letter-spacing: 1px;
+.doctorRegister .inputBx input[type="submit"] {
+  background: #75ac3a;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-section .contentBx .formBx .inputBx .custom_select {
-    position: relative;
-    width: 100%;
+.doctorRegister .inputBx input[type="submit"]:hover {
+  background: #5a7140;
 }
 
-section .contentBx .formBx .inputBx .custom_select {
-    width: 100%;
-    height: 100%;
+.doctorRegister .pass {
+  margin-bottom: 10px;
+  font-weight: 400;
 }
 
-section .contentBx .formBx .inputBx input {
-    width: 100%;
-    padding: 10px 20px;
-    outline: none;
-    font-weight: 400;
-    border: 1px solid #2F4858;
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: #2F4858;
-    background: transparent;
-    border-radius: 5px;
+.doctorRegister .auth-details {
+  font-size: 17px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #2f4858;
 }
 
-section .contentBx .formBx .inputBx input[type="submit"] {
-    background: #75AC3A;
-    color: #fff;
-    outline: none;
-    border: none;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-section .contentBx .formBx .inputBx input[type="submit"]:hover {
-    background: #5A7140;
-}
-
-section .contentBx .formBx .pass {
-    margin-bottom: 10px;
-    font-weight: 400;
-}
-
-section .contentBx .formBx .auth-details {
-    font-size: 17px;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    color: #2F4858;
-}
-
-section .contentBx .formBx .auth-details .auth-title {
-    /* font-size: 17px;
+.doctorRegister .auth-details .auth-title {
+  /* font-size: 17px;
     font-weight: 300; */
-    margin-bottom: 1rem !important;
-    /* color:#2F4858; */
+  margin-bottom: 1rem !important;
+  /* color:#2F4858; */
 }
 
-section .contentBx .formBx .auth-details .category {
-    display: flex;
-    width: 80%;
-    justify-content: space-between;
-    /* margin: 10px 0; */
+.doctorRegister .auth-details .category {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  /* margin: 10px 0; */
 }
 
-section .contentBx .formBx .auth-details .category label {
-    display: flex;
-    align-items: center;
+.doctorRegister .auth-details .category label {
+  display: flex;
+  align-items: center;
 }
 
-section .contentBx .formBx .auth-details .category .dot {
-    height: 18px;
-    width: 18px;
-    background: #d9d9d9;
-    border-radius: 50%;
-    margin-right: 10px;
-    border: 5px solid transparent;
+.doctorRegister .inputBx p {
+  color: #2f4858;
+  font-size: 17px;
+  font-weight: 300;
 }
 
-#dot-1:checked~.auth-details .category label .one,
-#dot-1:checked~.auth-details .category label .two,
-#dot-1:checked~.auth-details .category label .three {
-    border-color: #d9d9d9;
-    background: #75AC3A;
+.doctorRegister .inputBx p a {
+  color: #75ac3a;
 }
 
-form input[type="radio"] {
-    display: none;
+.doctorRegister .pass a {
+  color: #75ac3a;
 }
 
-section .contentBx .formBx .inputBx p {
-    color: #2F4858;
-    font-size: 17px;
-    font-weight: 300;
+.haveAccount {
+  text-align: center;
+}
+.haveAccount a {
+  color: #75ac3a;
+  margin-left: 1rem;
+  font-weight: 500;
+}
+.availabilityWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-section .contentBx .formBx .inputBx p a {
-    color: #75AC3A;
+.radioContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--darkMode800);
 }
-
-section .contentBx .formBx .pass a {
-    color: #75AC3A;
+.selectGender {
+  margin-bottom: 0.3rem;
 }
