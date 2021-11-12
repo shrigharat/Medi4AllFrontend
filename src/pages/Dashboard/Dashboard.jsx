@@ -91,9 +91,9 @@ const Dashboard = () => {
                 <div class="profile_content">
                     <div class="profile">
                         <div class="profile_details">
-                             {/* <img src="img1.png" alt=""> */}
-                            <div class ="name">Shrishail Gharat</div>
-                            <div class ="pincode">400 709</div>
+                            {/* <img src="img1.png" alt=""> */}
+                            <div class="name">Shrishail Gharat</div>
+                            <div class="pincode">400 709</div>
                         </div>
                     </div>
                 </div>
