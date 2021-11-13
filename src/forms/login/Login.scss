@@ -146,6 +146,11 @@ section .contentBx .formBx .pass a {
 }
 
 .noAccount {
-  font-size: var(--font-size-normal);
+  font-size: 16px !important;
   text-align: center;
+}
+
+.noAccount a{
+  
+  font-size: 16px !important;
 }

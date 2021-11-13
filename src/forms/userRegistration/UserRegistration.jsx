@@ -1,4 +1,5 @@
 import { Radio, RadioGroup } from "@chakra-ui/radio";
+import axiosInstance from "../../api/axiosInstance";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./UserRegistration.scss";
@@ -9,25 +10,95 @@ const UserRegistration = () => {
     female: "female",
     preferNS: "prefer not to say",
   };
-  const [gender, setGender] = useState("");
+  const [isFormSubmitting, setFormSubmitting] = useState(false);
+
+  const initialFormValues = {
+    first_name: "",
+    last_name: "",
+    dob: "",
+    age: "",
+    email: "",
+    phone_no: "",
+    address: "",
+    postal_code: "",
+    password: "",
+    gender: "",
+  };
+  const [formValues, setformValues] = useState(initialFormValues);
+
+  console.log("Form values USER: ", formValues);
+
+  const onInputChange = (e) => {
+    setformValues((prev) => {
+      const newValues = { ...prev };
+      newValues[e.target.name] = e.target.value;
+      return newValues;
+    });
+  };
+
+  const userRegister = async () => {
+    try {
+      const age =
+        new Date().getFullYear() - new Date(formValues.dob).getFullYear();
+      console.log("Age: ", age);
+      const userObject = { ...formValues, age };
+      const response = await axiosInstance.put("/users", userObject);
+      console.log("User registration successfull: ", response);
+      setformValues(initialFormValues);
+    } catch (e) {
+      console.log("Error: ", e);
+    }
+  };
+
   return (
-    <form className="userRegister">
-      <div class="inputBx">
-        <span>Full Name</span>
-        <input type="text" name="" />
+    <div className="userRegister">
+      <div className="inputRow">
+        <div class="inputBx">
+          <span>First Name</span>
+          <input
+            type="text"
+            name="first_name"
+            value={formValues.first_name}
+            onChange={onInputChange}
+          />
+        </div>
+        <div class="inputBx">
+          <span>Last Name</span>
+          <input
+            type="text"
+            name="last_name"
+            value={formValues.last_name}
+            onChange={onInputChange}
+          />
+        </div>
       </div>
       <div class="inputBx">
         <span>Email Address</span>
-        <input type="text" name="" />
+        <input
+          type="text"
+          name="email"
+          value={formValues.email}
+          onChange={onInputChange}
+        />
       </div>
       <div className="inputRow">
         <div class="inputBx">
           <span>Contact Number</span>
-          <input type="phone" name="" />
+          <input
+            type="phone"
+            name="phone_no"
+            value={formValues.phone_no}
+            onChange={onInputChange}
+          />
         </div>
         <div class="inputBx">
           <span>Date Of Birth</span>
-          <input type="date" />
+          <input
+            type="date"
+            name="dob"
+            value={formValues.dob}
+            onChange={onInputChange}
+          />
         </div>
       </div>
 
@@ -35,9 +106,9 @@ const UserRegistration = () => {
       <RadioGroup
         colorScheme="med"
         onChange={(e) => {
-          setGender(e);
+          setformValues((prev) => ({ ...prev, gender: e }));
         }}
-        value={gender}
+        value={formValues.gender}
       >
         <div className="radioContainer">
           <Radio _focus={{ outline: "none" }} size="md" value={genders.male}>
@@ -57,25 +128,37 @@ const UserRegistration = () => {
       </RadioGroup>
       <div class="inputBx">
         <span>Address</span>
-        <input type="text" name="" />
+        <input
+          type="text"
+          name="address"
+          value={formValues.address}
+          onChange={onInputChange}
+        />
       </div>
 
       <div class="inputBx">
         <span>Password</span>
-        <input type="password" name="" />
+        <input
+          type="password"
+          name="password"
+          value={formValues.password}
+          onChange={onInputChange}
+        />
       </div>
       <div class="inputBx">
         <span> Confirm Password</span>
         <input type="password" name="" />
       </div>
 
-      <button className="registerBtn">Register</button>
+      <button className="registerBtn" onClick={(e) => userRegister()}>
+        {isFormSubmitting ? "..." : "Register"}
+      </button>
       <div class="inputBx">
         <p className="haveAccount">
           Already have an account ?<Link to="/login">Login now</Link>
         </p>
       </div>
-    </form>
+    </div>
   );
 };
 

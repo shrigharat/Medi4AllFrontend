@@ -1,46 +1,114 @@
-import { Button } from "@chakra-ui/button";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
-import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./DoctorRegistration.scss";
+import {
+  genders,
+  initialFormValues,
+  days,
+  handleChange,
+  degrees,
+  validateValues,
+} from "./doctorFormValues";
+import { Select } from "@chakra-ui/select";
+import axiosInstance from "../../api/axiosInstance";
+import { useToast } from "@chakra-ui/toast";
 
 const DoctorRegistration = () => {
-  const genders = {
-    male: "male",
-    female: "female",
-    preferNS: "prefer not to say",
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [isFormSubmitting, setFormSubmitting] = useState(false);
+  const toast = useToast();
+  console.log("Form values: ", formValues);
+
+  const onInputChange = (e) => {
+    setFormValues((prev) => {
+      const newValues = { ...prev };
+      newValues[e.target.name] = e.target.value;
+      return newValues;
+    });
   };
-  const [gender, setGender] = useState("");
+
+  const doctorRegister = async () => {
+    const age =
+      new Date().getFullYear() - new Date(formValues.dob).getFullYear();
+    console.log("Age: ", age);
+    if (validateValues(formValues, toast)) {
+      setFormSubmitting(true);
+      try {
+        const response = await axiosInstance.put("/doctors", {
+          ...formValues,
+          age,
+        });
+        setFormSubmitting(false);
+      } catch (e) {
+        console.log("Could not register doctor: ", e);
+        setFormSubmitting(false);
+      }
+    }
+  };
 
   return (
-    <form className="doctorRegister">
-      <div class="inputBx">
-        <span>Name</span>
-        <input type="text" name="" />
+    <div className="doctorRegister">
+      <div className="inputRow">
+        <div class="inputBx">
+          <span>First Name</span>
+          <input
+            type="text"
+            name="first_name"
+            value={formValues.first_name}
+            onChange={onInputChange}
+          />
+        </div>
+        <div class="inputBx">
+          <span>Last Name</span>
+          <input
+            type="text"
+            name="last_name"
+            value={formValues.last_name}
+            onChange={onInputChange}
+          />
+        </div>
       </div>
 
       <div class="inputBx">
         <span>Email Address</span>
-        <input type="text" name="" />
+        <input
+          type="text"
+          name="email"
+          value={formValues.email}
+          onChange={onInputChange}
+        />
       </div>
 
       <div class="inputBx">
         <span>Contact Number</span>
-        <input type="phone" name="" />
+        <input
+          type="phone"
+          name="phone_no"
+          value={formValues.phone_no}
+          onChange={onInputChange}
+        />
       </div>
       <div class="inputBx">
         <span>Date Of Birth</span>
-        <input type="date" name="" />
+        <input
+          type="date"
+          name="dob"
+          value={formValues.dob}
+          onChange={onInputChange}
+        />
       </div>
       <p className="selectGender">Select gender</p>
       <RadioGroup
         colorScheme="med"
         onChange={(e) => {
-          setGender(e);
+          setFormValues((prev) => ({
+            ...prev,
+            gender: e,
+          }));
         }}
-        value={gender}
+        value={formValues.gender}
       >
         <div className="radioContainer">
           <Radio _focus={{ outline: "none" }} size="md" value={genders.male}>
@@ -61,77 +129,98 @@ const DoctorRegistration = () => {
       <div class="inputBx">
         <span>Degree</span>
         <div class="custom_select">
-          <Menu>
-            <MenuButton as={Button} 
-            w="100%"
-            textAlign="left"
-            // rightIcon={<ChevronDownIcon />}
-            >
-              Select your highest achieved degree
-            </MenuButton>
-            <MenuList>
-              <MenuItem>MBBS</MenuItem>
-              <MenuItem>BDS</MenuItem>
-              <MenuItem>MD</MenuItem>
-              <MenuItem>MS</MenuItem>
-              <MenuItem>DM</MenuItem>
-            </MenuList>
-          </Menu>
+          <Select
+            colorScheme="med"
+            placeholder="Select option"
+            _focus={{ outline: "none" }}
+            border="1px solid #424242"
+            onChange={(e) => {
+              setFormValues((prev) => ({ ...prev, degree: e.target.value }));
+            }}
+          >
+            {degrees.map((deg) => (
+              <option value={deg}>{deg}</option>
+            ))}
+          </Select>
         </div>
       </div>
 
       <div class="inputBx">
         <span>Speciality</span>
-        <input type="text" name="" />
+        <input
+          type="text"
+          name="speciality"
+          value={formValues.speciality}
+          onChange={onInputChange}
+        />
       </div>
 
       <div class="inputBx">
         <span>Years Of Experience</span>
-        <input type="phone" name="" />
+        <input
+          type="phone"
+          name="years_of_experience"
+          value={formValues.years_of_experience}
+          onChange={onInputChange}
+        />
       </div>
 
       <div class="inputBx">
         <span>Availability</span>
-        <form>
-          <CheckboxGroup
-            colorScheme="med"
-            defaultValue={["Monday", "Tuesday"]}
-            _focus={{ outline: "none" }}
-          >
-            <div className="availabilityWrapper">
-              <Checkbox value="Monday">Monday</Checkbox>
-              <Checkbox value="Tuesday">Tuesday</Checkbox>
-              <Checkbox value="Wednesday">Wednesday</Checkbox>
-              <Checkbox value="Thursday">Thursday</Checkbox>
-              <Checkbox value="Friday">Friday</Checkbox>
-              <Checkbox value="Saturday">Saturday</Checkbox>
-              <Checkbox value="Sunday">Sunday</Checkbox>
-            </div>
-          </CheckboxGroup>
-        </form>
+        <CheckboxGroup colorScheme="med">
+          <div className="availabilityWrapper">
+            {days.map((day, index) => {
+              return (
+                <Checkbox
+                  value={day}
+                  onChange={(e) => handleChange(e, setFormValues)}
+                >
+                  {day}
+                </Checkbox>
+              );
+            })}
+          </div>
+        </CheckboxGroup>
       </div>
 
       <div class="inputBx">
         <span>Address</span>
-        <input type="text" name="" />
+        <input
+          type="text"
+          name="address"
+          value={formValues.address}
+          onChange={onInputChange}
+        />
       </div>
 
       <div class="inputBx">
         <span>Password</span>
-        <input type="password" name="" />
+        <input
+          type="password"
+          name="password"
+          value={formValues.password}
+          onChange={onInputChange}
+        />
       </div>
       <div class="inputBx">
         <span> Confirm Password</span>
-        <input type="password" name="" />
+        <input
+          type="password"
+          name="confirm_password"
+          value={formValues.confirm_password}
+          onChange={onInputChange}
+        />
       </div>
 
-      <button className="registerBtn">Register</button>
+      <button className="registerBtn" onClick={doctorRegister}>
+        {isFormSubmitting ? "..." : "Register"}
+      </button>
       <div class="inputBx">
         <p className="haveAccount">
           Already have an account ?<Link to="/login">Login now</Link>
         </p>
       </div>
-    </form>
+    </div>
   );
 };
 
