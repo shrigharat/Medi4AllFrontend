@@ -1,0 +1,136 @@
+/* section .imgBx{
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+section .imgBx:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+section .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+} */
+
+.doctorRegister .inputBx {
+  margin-bottom: 20px;
+}
+
+.doctorRegister .inputBx span {
+  font-size: var(--form-font-size);
+  margin-bottom: 5px;
+  display: inline-block;
+  color: #2f4858;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.doctorRegister .inputBx .custom_select {
+  width: 100%;
+  height: 100%;
+}
+
+.doctorRegister .inputBx input {
+  width: 100%;
+  padding: 10px 20px;
+  outline: none;
+  font-weight: 400;
+  border: 1px solid #2f4858;
+  font-size: var(--form-font-size);
+  letter-spacing: 1px;
+  color: #2f4858;
+  background: transparent;
+  border-radius: 5px;
+}
+
+.doctorRegister .inputBx input[type="submit"] {
+  background: #75ac3a;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.doctorRegister .inputBx input[type="submit"]:hover {
+  background: #5a7140;
+}
+
+.doctorRegister .pass {
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.doctorRegister .auth-details {
+  font-size: 17px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #2f4858;
+}
+
+.doctorRegister .auth-details .auth-title {
+  /* font-size: 17px;
+    font-weight: 300; */
+  margin-bottom: 1rem !important;
+  /* color:#2F4858; */
+}
+
+.doctorRegister .auth-details .category {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  /* margin: 10px 0; */
+}
+
+.doctorRegister .auth-details .category label {
+  display: flex;
+  align-items: center;
+}
+
+.doctorRegister .inputBx p {
+  color: #2f4858;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.doctorRegister .inputBx p a {
+  color: #75ac3a;
+}
+
+.doctorRegister .pass a {
+  color: #75ac3a;
+}
+
+.haveAccount {
+  text-align: center;
+}
+.haveAccount a {
+  color: #75ac3a;
+  margin-left: 1rem;
+  font-weight: 500;
+}
+.availabilityWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.radioContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--darkMode800);
+}
+.selectGender {
+  margin-bottom: 0.3rem;
+}

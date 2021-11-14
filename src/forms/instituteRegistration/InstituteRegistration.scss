@@ -1,0 +1,127 @@
+
+/* section .imgBx{
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+section .imgBx:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+section .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+} */
+
+.instituteRegister .inputBx {
+    margin-bottom: 20px;
+}
+
+.instituteRegister .inputBx span {
+    font-size: var(--form-font-size);
+    margin-bottom: 5px;
+    display: inline-block;
+    color: var(--darkMode900);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.instituteRegister .inputBx input {
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid var(--darkMode900);
+    font-size: var(--form-font-size);
+    letter-spacing: 1px;
+    color: var(--darkMode900);
+    background: transparent;
+    border-radius: 5px;
+}
+
+.instituteRegister .inputBx input[type="submit"] {
+    background: #75AC3A;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.instituteRegister .inputBx input[type="submit"]:hover {
+    background: #5A7140;
+}
+
+.instituteRegister .pass {
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.instituteRegister .auth-details {
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: var(--darkMode900);
+}
+
+.instituteRegister .auth-details .auth-title {
+    /* font-size: 17px;
+    font-weight: 300; */
+    margin-bottom: 1rem !important;
+    /* color:var(--darkMode900); */
+}
+
+.instituteRegister .auth-details .category {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    /* margin: 10px 0; */
+}
+
+.instituteRegister .auth-details .category label {
+    display: flex;
+    align-items: center;
+}
+
+.instituteRegister .auth-details .category .dot {
+    height: 18px;
+    width: 18px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 5px solid transparent;
+}
+
+#dot-1:checked~.auth-details .category label .one,
+#dot-1:checked~.auth-details .category label .two,
+#dot-1:checked~.auth-details .category label .three {
+    border-color: #d9d9d9;
+    background: #75AC3A;
+}
+
+form input[type="radio"] {
+    display: none;
+}
+
+.instituteRegister .inputBx p {
+    color: var(--darkMode900);
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.instituteRegister .inputBx p a {
+    color: #75AC3A;
+}
+
+.instituteRegister .pass a {
+    color: #75AC3A;
+}

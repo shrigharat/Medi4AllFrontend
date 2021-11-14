@@ -1,11 +1,11 @@
 .App {
-  text-align: center;
-  height: 100vh;
-  width: 100vw;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }

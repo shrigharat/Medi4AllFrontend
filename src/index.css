@@ -1,4 +1,5 @@
 :root{
+  /* colors */
   --medGreen100: #e3eed7;
   --medGreen200: #d6e6c4;
   --medGreen300: #c8deb0;
@@ -8,6 +9,7 @@
   --medGreen700: #91bd61;
   --medGreen800: #83b44d;
   --medGreen900: #75AC39;
+  --medGreen950: rgb(101, 153, 46);
   --darkMode100: #F5F5F5;
   --darkMode200: #EEEEEE;
   --darkMode300: #E0E0E0;
@@ -17,6 +19,7 @@
   --darkMode700: #616161;
   --darkMode800: #424242;
   --darkMode900: #212121;
+  --form-font-size: 14px;
 }
 
 *{
