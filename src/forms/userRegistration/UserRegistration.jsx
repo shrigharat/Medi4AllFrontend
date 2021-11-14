@@ -38,6 +38,7 @@ const UserRegistration = () => {
 
   const userRegister = async () => {
     try {
+      setFormSubmitting(true);
       const age =
         new Date().getFullYear() - new Date(formValues.dob).getFullYear();
       console.log("Age: ", age);
@@ -45,8 +46,10 @@ const UserRegistration = () => {
       const response = await axiosInstance.put("/users", userObject);
       console.log("User registration successfull: ", response);
       setformValues(initialFormValues);
+      setFormSubmitting(false);
     } catch (e) {
       console.log("Error: ", e);
+      setFormSubmitting(false);
     }
   };
 
@@ -150,7 +153,11 @@ const UserRegistration = () => {
         <input type="password" name="" />
       </div>
 
-      <button className="registerBtn" onClick={(e) => userRegister()}>
+      <button
+        className={`registerBtn ${isFormSubmitting ? "disabled" : ""}`}
+        disabled={isFormSubmitting}
+        onClick={userRegister}
+      >
         {isFormSubmitting ? "..." : "Register"}
       </button>
       <div class="inputBx">

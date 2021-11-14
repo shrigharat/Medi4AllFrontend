@@ -212,7 +212,11 @@ const DoctorRegistration = () => {
         />
       </div>
 
-      <button className="registerBtn" onClick={doctorRegister}>
+      <button
+        className={`registerBtn ${isFormSubmitting? "disabled" : ""}`}
+        onClick={doctorRegister}
+        disabled={isFormSubmitting}
+      >
         {isFormSubmitting ? "..." : "Register"}
       </button>
       <div class="inputBx">

@@ -76,6 +76,11 @@ section .imgBx img{
   }
 }
 
+.registerBtn.disabled{
+  background-color: var(--darkMode400);
+  cursor: not-allowed;
+}
+
 .userRegister .inputBx input[type="submit"]:hover {
   background: #5a7140;
 }

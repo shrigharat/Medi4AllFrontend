@@ -45,10 +45,36 @@ const LoginForm = () => {
     }
     setFormSubmitting(true);
     try {
-      const user = await axiosInstance.post("/users/login", formValues);
+      const endpoint =
+        userType === userTypes.patient
+          ? "/users"
+          : userType === userTypes.doctor
+          ? "/doctors"
+          : "/institutions";
+      const response = await axiosInstance.post(
+        endpoint + "/login",
+        formValues
+      );
+      toast({
+        title: "Login successful",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        variant: "solid",
+        position: "top-right",
+        colorScheme: "med"
+      });
       setFormSubmitting(false);
-      dispatch(login(user.data));
+      dispatch(login({...response.data, userType}));
     } catch (e) {
+      toast({
+        title: e.response.data.error,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        variant: "solid",
+        position: "top-right",
+      });
       setFormSubmitting(false);
     }
   };
@@ -94,7 +120,7 @@ const LoginForm = () => {
             <div class="inputBx">
               <span>Email Address or Username</span>
               <input
-              required
+                required
                 type="text"
                 name=""
                 value={formValues.email}
@@ -106,7 +132,7 @@ const LoginForm = () => {
             <div class="inputBx">
               <span>Password</span>
               <input
-              required
+                required
                 type="password"
                 name=""
                 value={formValues.password}
@@ -126,7 +152,8 @@ const LoginForm = () => {
             </button>
             <div class="inputBx">
               <p className="noAccount">
-                Don't have an account ?<Link to="/registration">Register now</Link>
+                Don't have an account ?
+                <Link to="/registration">Register now</Link>
               </p>
             </div>
           </form>
