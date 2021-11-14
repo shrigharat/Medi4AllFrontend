@@ -1,122 +1,126 @@
-
-// *{
-//     padding: 0;
-//     margin: 0;
-//     box-sizing: border-box;
-//     font-family:"poppins" , sans-serif;
-// }
-// body{
-//     position: relative;
-//     min-height: 100vh;
-//     width: 100%;
-//     overflow: hidden;
-
-// }
-.sidebar{
-    position: fixed;
-    top: 0;
-    left: 0;
+.container{
+    display: flex;
     height: 100%;
-    width: 240px;
-    background:#fff;
-    padding: 6px 14px;
-
-
-    .logo_content .logo{
-        color: #75AC39;
-        display: flex;
-        height: 50px;
-        width: 100%;
-        align-items: center;
-    }
-}
-// .sidebar .logo_content .logo{
-//     color: #75AC39;
-//     display: flex;
-//     height: 50px;
-//     width: 100%;
-//     align-items: center;
-// }
-.logo_content .logo i{
-    font-size: 28px;
-    margin-right: 5px;
+    width: 100%;
     
 }
-.logo_content .logo .logo_name{
-    font-size:20px ;
+.main_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+   
+}
+.sidebar{
+    /* position: fixed; */
+    height: 100%;
+    width: 300px;
+    background:#fff;
+    border-right:1px solid #E0E0E0 ;
+    /* box-shadow: 0px 3px 12px rgba(0,0,0,0.2); */
+}
+.sidebar .nav-links{
+  
+    padding-top: 60px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content:space-between;
+}
+.sidebar .nav-links li{
+    height: 50px;
+    width: 100%;
+    list-style: none;
+}  
+.sidebar .nav-links li a{
+   
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #424242;
+    text-decoration: none;
+    transition: all 0.4s ease;
+ 
+}  
+.sidebar .nav-links li a.active{
+    background:#d6e6c4 !important;
+}
+.sidebar .nav-links li a:hover{
+    background:#EEEEEE;
+}
+.sidebar .nav-links li a i{
+    min-width: 60px;
+    text-align: center;
+    color: #424242;
+    font-size: 18px;
+
+}
+.sidebar .nav-links li a .link_name{
+    color:#424242 ;
+    font-size: 15px;
     font-weight: 400;
 
 }
-.sidebar #btn{
-    position: absolute;
-    color: #75AC39;
-    left:90%;
-    top:6px;
-    font-size: 20px;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    line-height: 50px;
-    transform: translate(-50%);
-
-}
-.sidebar ul{
-    margin-top: 20px;
-
-}
-.sidebar ul li{
-    position: relative;
-    height: 50px;
+.header{
+    /* background:#fff; */
+    
     width: 100%;
-    margin: 0 5px;
-    list-style: none;
-    line-height: 50px;
-    border-radius: 12px;
+  
+ 
 }
-.sidebar ul li input{
-    position: absolute;
-    height: 100%;
-    width:100%;
-    left: 0;
-    top:0;
-    border-radius: 12px;
-    outline: none;
-    border:none;
-    background:#E7F6D1;
-    padding-left: 50px;
-    font-size: 18px;
-    color:#75AC39;
-
-}
-.sidebar ul li .bx-search{
-    position: absolute;
-    z-index:99;
-    color:#75AC39 ;
-    font-size: 22px;
-}
-.sidebar ul li a{
-    color: #75AC39;
-    border-radius: 12px;
-
+.header nav{
+    height: 60px;
+    background:#fff;
+    box-shadow: 0px 3px 12px rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+    padding: 0 20px;
     display: flex;
     align-items: center;
-    text-decoration: none;
-    transition: all 0.4s ease;
-
+    justify-content: space-between;
 }
-.sidebar ul li a:hover{
-    color:#005166;
-    background: #F6FBEE;
-
+.header nav .sidebar-button{
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
 }
-.sidebar ul li  i{
+.header nav .sidebar-button i{
+    font-size: 25px;
+    margin-right: 10px;
+}
+.header nav .profile-details{
     height: 50px;
-    min-width:50px;
-    border-radius: 12px;
-    line-height: 50px;
-    text-align:center;
-
+    display: flex;
+    align-items: center;
+    min-width: 80px;
 }
-.sidebar .profile_content{
+.header nav .profile-details img{
+    height: 40px;
+    width: 40px;
+    object-fit: 6px;
+    border-radius: 50%;
+    margin-right: .5rem;
     
 }
+.header nav .profile-details .admin_name{
+    color:#424242 ;
+    font-size: 15px;
+    font-weight: 400;
+
+}
+.cards{
+    height:100%;
+    background:#fff;
+
+}
+.cards .info_card{
+    background: #fff;
+    padding: 1rem;
+    margin:2rem 1rem;
+    border:1px solid #E0E0E0 ;
+    border-radius: 6px;
+}
+
+
+

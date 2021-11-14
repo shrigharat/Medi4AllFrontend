@@ -2,106 +2,123 @@ import React from 'react'
 import "./Dashboard.scss"
 const Dashboard = () => {
     return (
-        <div>
-            <div class="sidebar">
-                <div class="logo_content">
-                    <div class="logo">
-                        <i class="fas fa-search-plus"></i>
-                        <div class="logo_name">Medi4all</div>
-                    </div>
-                    <i class='bx bx-menu' id="btn"></i>
-                </div>
-                <ul class="nav_list">
-                    <li>
-                        <i class='bx bx-search'></i>
-                        <input type="text" placeholder="Search"></input>
+        <div class="container">
+      <div class="sidebar">
+        <ul class="nav-links">
+          <div>
+            <li>
+              <a href="#">
+                <i class="fas fa-history"></i>
+                <span class="link_name">My History</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="far fa-calendar-alt"></i>
+                <span class="link_name">Appointments</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="far fa-clipboard"></i>
+                <span class="link_name">Consultation</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-user-md"></i>
+                <span class="link_name">My Doctors</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active">
+                <i class="fas fa-notes-medical"></i>
 
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-grid-alt'></i>
-                            <span class="links_name">Dashboard</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-user'></i>
-                            <span class="links_name">User</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-history'></i>
-                            <span class="links_name">My History</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-calendar'></i>
-                            <span class="links_name">Appointements</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-calendar-edit'></i>
-                            <span class="links_name">Consultation</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-user-check'></i>
-                            <span class="links_name">My Doctors</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-notepad'></i>
-                            <span class="links_name">Medical Records</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-bell'></i>
-                            <span class="links_name">Notifications</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-cog'></i>
-                            <span class="links_name">Settings</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class='bx bx-help-circle'></i>
-                            <span class="links_name">Help</span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="profile_content">
-                    <div class="profile">
-                        <div class="profile_details">
-                             {/* <img src="img1.png" alt=""> */}
-                            <div class ="name">Shrishail Gharat</div>
-                            <div class ="pincode">400 709</div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <i class='bx bx-log-out' id="log_out"></i>
-                </div>
+                <span class="link_name">Medical records</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="far fa-bell"></i>
+                <span class="link_name">Notification</span>
+              </a>
+            </li>
+          </div>
+          <div>
+            <li>
+              <a href="#">
+                <i class="fas fa-book-medical"></i>
+                <span class="link_name">Health Articles</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-cog"></i>
+                <span class="link_name">Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="far fa-question-circle"></i>
+                <span class="link_name">Help</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="link_name">Log out</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    
+      <div class="main_container">
+        <section class="header">
+          <nav>
+            <div class="sidebar-button">
+              <i class="fas fa-search-plus"></i>
+              <span class="dashboard">Medi4all</span>
             </div>
-        </div>
+            <div class="profile-details">
+              <img src="Prajakta.jpg" width="40px" height="40px" alt="" />
+              <span class="admin_name">User</span>
+            </div>
+          </nav>
+        </section>
+
+        <section class="cards">
+          <article class="info_card">
+            <div class="text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod
+              corporis commodi omnis sunt quibusdam laudantium ut. Cupiditate,
+              velit quia! Error labore ut asperiores eius culpa?
+            </div>
+          </article>
+          <article class="info_card">
+            <div class="text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod
+              corporis commodi omnis sunt quibusdam laudantium ut. Cupiditate,
+              velit quia! Error labore ut asperiores eius culpa?
+            </div>
+          </article>
+          <article class="info_card">
+            <div class="text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod
+              corporis commodi omnis sunt quibusdam laudantium ut. Cupiditate,
+              velit quia! Error labore ut asperiores eius culpa?
+            </div>
+          </article>
+          <article class="info_card">
+            <div class="text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod
+              corporis commodi omnis sunt quibusdam laudantium ut. Cupiditate,
+              velit quia! Error labore ut asperiores eius culpa?
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
     )
 }
 
