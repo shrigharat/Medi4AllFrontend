@@ -1,68 +1,206 @@
-import React from "react";
+import { Select } from "@chakra-ui/select";
+import React, { useEffect, useState } from "react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useToast,
+} from "@chakra-ui/react";
+import {
+  initialFormValues,
+  showToast,
+  validateValues,
+} from "./appointmentFormValues";
 import "./Appointment.scss";
+import { useSelector } from "react-redux";
+import axiosInstance from "../../api/axiosInstance";
 
-const Appointment = () => {
+const Appointment = ({ onClose, isOpen }) => {
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [doctors, setDoctors] = useState([]);
+  const [isFormSubmitting, setFormSubmitting] = useState(false);
+  const { user } = useSelector((state) => state.authReducer);
+  const toast = useToast();
+  console.log("Form values: ", formValues);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/doctors/all")
+      .then((response) => setDoctors(response.data))
+      .catch((e) => {
+        console.log("Error occured in fetching doctors: ", { ...e });
+      });
+  }, []);
+
+  const onInputChange = (e) => {
+    setFormValues((prev) => {
+      const newValues = { ...prev };
+      newValues[e.target.name] = e.target.value;
+      return newValues;
+    });
+  };
+
+  const bookAppointment = async () => {
+    if (validateValues(formValues, toast)) {
+      setFormSubmitting(true);
+      try {
+        await axiosInstance.put("/appointments", {
+          ...formValues,
+          patient_id: user._id,
+        });
+        showToast(toast, "Appointment request was sent", "success");
+        setFormSubmitting(false);
+        setFormValues(initialFormValues);
+        onClose();
+      } catch (e) {
+        console.log("Error creating appointment: ", { ...e });
+        showToast(
+          toast,
+          "There was an error creating your appointment, please try again"
+        );
+        setFormSubmitting(false);
+      }
+    }
+  };
+
   return (
-    <section>
-      <div class="contentBx">
-        <div class="formBx">
-          <h2>Book An Appointment</h2>
-          <form>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      motionPreset="slideInBottom"
+      size={"xl"}
+      blockScrollOnMount
+    >
+      <ModalOverlay />
+      <ModalContent h={"90vh"} my={"auto"}>
+        <ModalHeader textAlign="left">Book an appointment</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody w={"92%"} p={0} pr={4} overflowY="scroll">
+          <div className="appointmentForm">
             <div class="inputBx">
               <span>Patient ID</span>
-              <input type="text" name="" />
+              <input
+                type="text"
+                name="patient_id"
+                value={user._id}
+                disabled
+                onChange={onInputChange}
+              />
             </div>
             <div class="inputBx">
               <span>Doctor ID</span>
               <div class="custom_select">
-                <select>
-                  <option value="">Select</option>
-                  <option value="M4A00">M4A00</option>
-                  <option value="M4A01">M4A01</option>
-                  <option value="M4A02">M4A02</option>
-                  <option value="M4A03">M4A03</option>
-                  <option value="M4A04">M4A04</option>
-                </select>
+                <Select
+                  _focus={{ outline: "none" }}
+                  border="1px solid #212121 !important"
+                  placeholder="Select doctor's ID"
+                  value={formValues.doctor_info._id}
+                  name="doctor_info"
+                  onChange={(e) => {
+                    setFormValues((prev) => {
+                      const newValues = { ...prev };
+                      newValues[e.target.name] = JSON.parse(e.target.value);
+                      return newValues;
+                    });
+                  }}
+                >
+                  {doctors.map((doctor) => {
+                    const { first_name, last_name, _id, institute_id } = doctor;
+                    return (
+                      <option
+                        value={JSON.stringify({
+                          id: _id,
+                          first_name,
+                          last_name,
+                          institute_id,
+                        })}
+                      >
+                        {"Dr. " + first_name + " " + last_name}
+                      </option>
+                    );
+                  })}
+                </Select>
               </div>
             </div>
 
             <div class="inputBx">
               <span>Appointment Mode</span>
               <div class="custom_select">
-                <select>
-                  <option value="">Select</option>
+                <Select
+                  _focus={{ outline: "none" }}
+                  border="1px solid #212121 !important"
+                  placeholder="Select a mode of appointment"
+                  onChange={onInputChange}
+                  value={formValues.appointment_mode}
+                  name="appointment_mode"
+                >
                   <option value="Offline">Offline</option>
                   <option value="Online">Online</option>
-                </select>
+                </Select>
               </div>
             </div>
 
             <div class="inputBx">
-              <span>Appointment Date</span>
-              <input type="date" name="" />
+              <span>Preferred Appointment Date</span>
+              <input
+                type="date"
+                name="appointment_date"
+                value={formValues.appointment_date}
+                onChange={onInputChange}
+              />
             </div>
 
             <div class="inputBx">
-              <span>Appointment Time</span>
-              <input type="time" name="" />
+              <span>Preferred Appointment Time</span>
+              <input
+                type="time"
+                name="appointment_time"
+                value={formValues.appointment_time}
+                onChange={onInputChange}
+              />
             </div>
 
             <div class="inputBx">
               <span>Symptom or health problem</span>
-              <input type="text" name="" />
+              <input
+                type="text"
+                name="appointment_reason"
+                value={formValues.appointment_reason}
+                onChange={onInputChange}
+              />
             </div>
             <div class="inputBx">
-              <span>Additional Note</span>
-              <input type="text" name="" />
+              <span>Additional Notes</span>
+              <input
+                type="text"
+                name="additional_notes"
+                value={formValues.additional_notes}
+                onChange={onInputChange}
+              />
             </div>
+          </div>
+        </ModalBody>
 
-            <div class="inputBx">
-              <input type="submit" value="Confirm Appointment" name="" />
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
+        <ModalFooter>
+          <div className="actionWrapper">
+            <button
+              className={`bookBtn ${isFormSubmitting ? "disabledBtn" : ""}`}
+              disabled={isFormSubmitting}
+              onClick={bookAppointment}
+            >
+              Confirm
+            </button>
+            <button className="cancelBtn" onClick={onClose}>
+              Cancel
+            </button>
+          </div>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   );
 };
 

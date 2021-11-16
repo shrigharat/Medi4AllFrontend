@@ -1,6 +1,7 @@
 import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import "./InstituteRegistration.scss";
 import {
   initialFormValues,
@@ -16,6 +17,7 @@ const InstituteRegistration = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [isFormSubmitting, setFormSubmitting] = useState(false);
   const toast = useToast();
+  const history = useHistory();
   console.log("Form values: ", formValues);
 
   const onInputChange = (e) => {
@@ -42,6 +44,7 @@ const InstituteRegistration = () => {
           colorScheme: "med"
         });
         setFormValues(initialFormValues);
+        history.push("/login");
       } catch (e) {
         console.log("Couldn't register insititue: ");
         setFormSubmitting(false);

@@ -4,7 +4,7 @@ import { Radio, RadioGroup, Stack, useToast } from "@chakra-ui/react";
 import axiosInstance from "../../api/axiosInstance";
 import { login } from "../../redux/reducers/authSlice";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 const userTypes = {
   patient: "patient",
@@ -16,6 +16,7 @@ const LoginForm = () => {
   const [userType, setUserType] = useState(userTypes.patient);
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [isFormSubmitting, setFormSubmitting] = useState(false);
+  const history = useHistory();
   const toast = useToast();
   const dispatch = useDispatch();
 
@@ -66,6 +67,8 @@ const LoginForm = () => {
       });
       setFormSubmitting(false);
       dispatch(login({...response.data, userType}));
+      history.push("/dashboard");
+      setFormValues({ email: "", password: "" });
     } catch (e) {
       toast({
         title: e.response.data.error,

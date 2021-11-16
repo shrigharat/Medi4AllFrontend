@@ -8,15 +8,19 @@ const authSlice = createSlice({
     errorMessage: null,
     successMessage: null,
     token: null,
+    userType: ""
   },
   reducers: {
     login: (state, action) => {
       state.userLoggedIn = true;
       state.user=action.payload;
+      state.token = action.payload.token;
+      state.userType = action.payload.userType;
       state.successMessage = "Logged in succesfully";
     },
     logout: (state) => {
       state.userLoggedIn = false;
+      state.token = null;
       state.user={};
       state.successMessage = "Logged out succesfully";
     }

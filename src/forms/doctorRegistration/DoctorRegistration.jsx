@@ -2,6 +2,7 @@ import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import "./DoctorRegistration.scss";
 import {
   genders,
@@ -19,6 +20,7 @@ const DoctorRegistration = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [isFormSubmitting, setFormSubmitting] = useState(false);
   const toast = useToast();
+  const history = useHistory();
   console.log("Form values: ", formValues);
 
   const onInputChange = (e) => {
@@ -40,7 +42,17 @@ const DoctorRegistration = () => {
           ...formValues,
           age,
         });
+        toast({
+          title: "Registration successful",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          variant: "solid",
+          position: "top-right",
+          colorScheme: "med"
+        });
         setFormSubmitting(false);
+        history.push("/login");
       } catch (e) {
         console.log("Could not register doctor: ", e);
         setFormSubmitting(false);

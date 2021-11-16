@@ -1,12 +1,14 @@
 import CallPage from "./pages/CallPage/CallPage";
 import { SocketProvider } from "./contexts/SocketContext";
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import LoginForm from "./forms/login/Login";
 import Registration from "./pages/Registration/Registration";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { userLoggedIn } = useSelector((state) => state.authReducer);
   return (
     <div className="App">
       <Switch>
@@ -16,13 +18,16 @@ function App() {
           </SocketProvider>
         </Route>
         <Route exact path="/">
-          <Dashboard />
+          {userLoggedIn ? <Dashboard /> : <Redirect to="/login" />}
         </Route>
         <Route exact path="/login">
-          <LoginForm />
+        {userLoggedIn ? <Dashboard /> : <LoginForm/> }
         </Route>
         <Route exact path="/registration">
           <Registration />
+        </Route>
+        <Route exact path="/dashboard">
+          {userLoggedIn ? <Dashboard /> : <Redirect to="/login" />}
         </Route>
       </Switch>
     </div>

@@ -14,6 +14,7 @@ const initialFormValues = {
   years_of_experience: "",
   degree: "",
   availability: [],
+  speciality: ""
 };
 
 const days = [

@@ -8,6 +8,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: .5rem;
 }
 .sidebar{
     /* position: fixed; */
@@ -30,9 +31,9 @@
     height: 50px;
     width: 100%;
     list-style: none;
+    cursor: pointer;
 }  
 .sidebar .nav-links li a{
-   
     height: 100%;
     width: 100%;
     display: flex;
@@ -64,14 +65,13 @@
 .header{
     /* background:#fff; */
     width: 100%;
-    height: fit-content;
+    height: 60px;
+    border-bottom: 1px solid #E0E0E0 ;
 }
 .header nav{
     width: 100%;
-    height: 60px;
     background:#fff;
     box-shadow: 0px 3px 12px rgba(0,0,0,0.2);
-    margin-bottom: 1rem;
     padding: 0 20px;
     display: flex;
     align-items: center;
@@ -83,6 +83,18 @@
     font-size: 24px;
     font-weight: 500;
 }
+
+.header nav .sidebar-button .logoImg{
+    height: 40px;
+    width: auto;
+}
+.header nav .sidebar-button .four{
+    color: var(--medGreen900);
+    font-size: 1.9rem;
+}
+.header nav .sidebar-button .logoName{
+    margin-left: .5rem;
+}
 .header nav .sidebar-button i{
     font-size: 25px;
     margin-right: 10px;
@@ -90,16 +102,21 @@
 .header nav .profile-details{
     height: 50px;
     display: flex;
+    justify-content: center;
     align-items: center;
     min-width: 80px;
+    padding: 0 .5rem;
 }
-.header nav .profile-details img{
+.header nav .profile-details .user-img{
     height: 40px;
     width: 40px;
-    object-fit: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     margin-right: .5rem;
-    
+    font-size: 1.5rem;
+    color: var(--darkMode800);
 }
 .header nav .profile-details .admin_name{
     color:#424242 ;
@@ -107,16 +124,16 @@
     font-weight: 400;
 
 }
-.cards{
-    height:100%;
-    background:#fff;
-    display: flex;
-    flex-direction: column;
+
+.bookAppointment{
+    background-color: var(--medGreen900);
+    width: fit-content;
+    color: white;
+    padding: .5rem 1rem;
+    margin-left: 1rem;
+    transition: .2s ease;
 }
-.cards .info_card{
-    background: #fff;
-    padding: 1rem;
-    margin:2rem 1rem;
-    border:1px solid #E0E0E0 ;
-    border-radius: 6px;
+
+.bookAppointment:hover{
+    transform: scale(1.1);
 }

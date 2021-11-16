@@ -1,39 +1,5 @@
 
-/* width */
 
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-
-/* Track */
-
- ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-
-/* Handle */
-
- ::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-
-/* Handle on hover */
-
- ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 /* section .imgBx{
@@ -59,24 +25,16 @@ section .imgBx img{
 
 } */
 
-section .contentBx {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
+
+.appointmentForm {
+    width: 100%;
+    // box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
+    // padding: 3rem 4rem;
+    // margin-top: 2rem;
+    // height: 80%;
 }
 
-section .contentBx .formBx {
-    width: 70%;
-    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
-    padding: 3rem 4rem;
-    margin-top: 2rem;
-    height: 80%;
-    overflow-y: scroll;
-}
-
-section .contentBx .formBx h2 {
+.appointmentForm h2 {
     color: black;
     font-weight: 600;
     font-size: 1.5em;
@@ -87,43 +45,43 @@ section .contentBx .formBx h2 {
     letter-spacing: 1px;
 }
 
-section .contentBx .formBx .inputBx {
+.appointmentForm .inputBx {
     margin-bottom: 20px;
 }
 
-section .contentBx .formBx .inputBx span {
+.appointmentForm .inputBx span {
     font-size: 16px;
     margin-bottom: 5px;
     display: inline-block;
-    color: #2F4858;
+    color: var(--darkMode800);
     font-weight: 300;
     letter-spacing: 1px;
 }
 
-section .contentBx .formBx .inputBx .custom_select {
+.appointmentForm .inputBx .custom_select {
     position: relative;
     width: 100%;
 }
 
-section .contentBx .formBx .inputBx .custom_select {
+.appointmentForm .inputBx .custom_select {
     width: 100%;
     height: 100%;
 }
 
-section .contentBx .formBx .inputBx input {
+.appointmentForm .inputBx input {
     width: 100%;
     padding: 10px 20px;
     outline: none;
     font-weight: 400;
-    border: 1px solid #2F4858;
+    border: 1px solid var(--darkMode800);
     font-size: 16px;
     letter-spacing: 1px;
-    color: #2F4858;
+    color: var(--darkMode800);
     background: transparent;
     border-radius: 5px;
 }
 
-section .contentBx .formBx .inputBx input[type="submit"] {
+.appointmentForm .inputBx input[type="submit"] {
     background: #75AC3A;
     color: #fff;
     outline: none;
@@ -132,42 +90,42 @@ section .contentBx .formBx .inputBx input[type="submit"] {
     cursor: pointer;
 }
 
-section .contentBx .formBx .inputBx input[type="submit"]:hover {
+.appointmentForm .inputBx input[type="submit"]:hover {
     background: #5A7140;
 }
 
-section .contentBx .formBx .pass {
+.appointmentForm .pass {
     margin-bottom: 10px;
     font-weight: 400;
 }
 
-section .contentBx .formBx .auth-details {
+.appointmentForm .auth-details {
     font-size: 17px;
     font-weight: 300;
     margin-bottom: 1rem;
-    color: #2F4858;
+    color: var(--darkMode800);
 }
 
-section .contentBx .formBx .auth-details .auth-title {
+.appointmentForm .auth-details .auth-title {
     /* font-size: 17px;
     font-weight: 300; */
     margin-bottom: 1rem !important;
-    /* color:#2F4858; */
+    /* color:var(--darkMode800); */
 }
 
-section .contentBx .formBx .auth-details .category {
+.appointmentForm .auth-details .category {
     display: flex;
     width: 80%;
     justify-content: space-between;
     /* margin: 10px 0; */
 }
 
-section .contentBx .formBx .auth-details .category label {
+.appointmentForm .auth-details .category label {
     display: flex;
     align-items: center;
 }
 
-section .contentBx .formBx .auth-details .category .dot {
+.appointmentForm .auth-details .category .dot {
     height: 18px;
     width: 18px;
     background: #d9d9d9;
@@ -187,16 +145,41 @@ form input[type="radio"] {
     display: none;
 }
 
-section .contentBx .formBx .inputBx p {
-    color: #2F4858;
+.appointmentForm .inputBx p {
+    color: var(--darkMode800);
     font-size: 17px;
     font-weight: 300;
 }
 
-section .contentBx .formBx .inputBx p a {
+.appointmentForm .inputBx p a {
     color: #75AC3A;
 }
 
-section .contentBx .formBx .pass a {
+.appointmentForm .pass a {
     color: #75AC3A;
+}
+.actionWrapper{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.bookBtn, .cancelBtn{
+    width: fit-content;
+    padding: .3rem 1rem;
+    border-radius: 4px;
+}
+.bookBtn{
+    background-color: var(--medGreen600);
+    color: var(--darkMode100);
+    padding: 0 1rem;
+}
+.bookBtn.disabledBtn{
+  background-color: var(--darkMode400);
+  cursor: not-allowed;
+}
+.cancelBtn{
+    background-color: var(--darkMode300);
+    color: var(--darkMode800)
 }
