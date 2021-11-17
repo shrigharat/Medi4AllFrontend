@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import LoginForm from "./forms/login/Login";
 import Registration from "./pages/Registration/Registration";
 import { useSelector } from "react-redux";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 function App() {
   const { userLoggedIn } = useSelector((state) => state.authReducer);
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route exact path="/dashboard">
           {userLoggedIn ? <Dashboard /> : <Redirect to="/login" />}
+        </Route>
+        <Route exact path="/landingpage">
+          <LandingPage />
         </Route>
       </Switch>
     </div>
