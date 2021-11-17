@@ -11,6 +11,11 @@ const initialFormValues = {
   patient_id: "",
 };
 
+const confirmedFormValues = {
+  confirmed_time: "",
+  confirmed_date: "",
+}
+
 const showToast = (toast, message, type = "error") => {
   toast({
     title: message,
@@ -42,4 +47,4 @@ const validateValues = (formValues, toast) => {
   return true;
 };
 
-export { initialFormValues, validateValues, showToast };
+export { initialFormValues, validateValues, showToast, confirmedFormValues };

@@ -1,6 +1,6 @@
 import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import "./DoctorRegistration.scss";
@@ -18,10 +18,17 @@ import { useToast } from "@chakra-ui/toast";
 
 const DoctorRegistration = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
+  const [institutions, setInstitutions] = useState([]);
   const [isFormSubmitting, setFormSubmitting] = useState(false);
   const toast = useToast();
   const history = useHistory();
   console.log("Form values: ", formValues);
+
+  useEffect(() => {
+    axiosInstance.get("/institutions/all").then(response => {
+      setInstitutions(response.data)
+    })
+  }, []);
 
   const onInputChange = (e) => {
     setFormValues((prev) => {
@@ -49,7 +56,7 @@ const DoctorRegistration = () => {
           isClosable: true,
           variant: "solid",
           position: "top-right",
-          colorScheme: "med"
+          colorScheme: "med",
         });
         setFormSubmitting(false);
         history.push("/login");
@@ -168,6 +175,22 @@ const DoctorRegistration = () => {
       </div>
 
       <div class="inputBx">
+        <span>Select associated institution</span>
+        <Select
+          _focus={{ outline: "none" }}
+          border="1px solid #212121 !important"
+          placeholder="Select institution"
+          value={formValues.institute_id}
+          name="institute_id"
+          onChange={onInputChange}
+        >
+          {institutions.map((inst) => (
+            <option value={inst._id}>{inst.name}</option>
+          ))}
+        </Select>
+      </div>
+
+      <div class="inputBx">
         <span>Years Of Experience</span>
         <input
           type="phone"
@@ -225,7 +248,7 @@ const DoctorRegistration = () => {
       </div>
 
       <button
-        className={`registerBtn ${isFormSubmitting? "disabled" : ""}`}
+        className={`registerBtn ${isFormSubmitting ? "disabled" : ""}`}
         onClick={doctorRegister}
         disabled={isFormSubmitting}
       >

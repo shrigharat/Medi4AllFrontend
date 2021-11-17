@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { clearAppointments } from "../../../../redux/reducers/appointmentsSlice";
 import { logout } from "../../../../redux/reducers/authSlice";
+import { clearHistory } from "../../../../redux/reducers/medHistorySlice";
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
   const dispatch = useDispatch();
@@ -95,6 +97,8 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
             <a
               onClick={() => {
                 dispatch(logout());
+                dispatch(clearAppointments());
+                dispatch(clearHistory());
               }}
             >
               <i class="fas fa-sign-out-alt"></i>

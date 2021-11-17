@@ -3,33 +3,14 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/modal";
-import { useToast } from "@chakra-ui/toast";
-import React, { useState } from "react";
-import {
-  initialFormValues,
-  validateValues,
-  frequency,
-} from "./medInfoFormValues";
 import "./MedicalInfo.scss";
-import { Select } from "@chakra-ui/select";
 
-const MedicalInfoForm = ({ onClose, isOpen }) => {
-  const [formValues, setFormValues] = useState(initialFormValues);
-  const [isFormSubmitting, setFormSubmitting] = useState(false);
-  const toast = useToast();
-  console.log("Form values: ", formValues);
+const MedicalInfoView = ({ medHistory, isOpen, onClose }) => {
+  console.log("Form values: ", medHistory);
 
-  const onInputChange = (e) => {
-    setFormValues((prev) => {
-      const newValues = { ...prev };
-      newValues[e.target.name] = e.target.value;
-      return newValues;
-    });
-  };
   return (
     <Modal
       isOpen={isOpen}
@@ -49,17 +30,17 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="patient_id"
-                value={formValues.patient_id}
-                onChange={onInputChange}
+                value={medHistory.patient_id}
+                disabled
               />
             </div>
             <div class="inputBx">
-              <span>Hospital Registration Number</span>
+              <span>Doctor ID</span>
               <input
                 type="text"
                 name="doctor_id"
-                value={formValues.doctor_id}
-                onChange={onInputChange}
+                value={medHistory.doctor_id}
+                disabled
               />
             </div>
 
@@ -68,8 +49,8 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="medical_condition"
-                value={formValues.medical_condition}
-                onChange={onInputChange}
+                value={medHistory.medical_condition}
+                disabled
               />
             </div>
 
@@ -78,8 +59,8 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="oxygen_level"
-                value={formValues.oxygen_level}
-                onChange={onInputChange}
+                value={medHistory.oxygen_level}
+                disabled
               />
             </div>
             <div class="inputBx">
@@ -87,8 +68,8 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="heart_rate"
-                value={formValues.heart_rate}
-                onChange={onInputChange}
+                value={medHistory.heart_rate}
+                disabled
               />
             </div>
             <div class="inputBx">
@@ -96,8 +77,8 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="blood_pressure"
-                value={formValues.blood_pressure}
-                onChange={onInputChange}
+                value={medHistory.blood_pressure}
+                disabled
               />
             </div>
             <div class="inputBx">
@@ -105,8 +86,8 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="weight_height"
-                value={formValues.weight_height}
-                onChange={onInputChange}
+                value={medHistory.weight_height}
+                disabled
               />
             </div>
 
@@ -115,8 +96,8 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="inborn_disease"
-                value={formValues.inborn_disease}
-                onChange={onInputChange}
+                value={medHistory.inborn_disease}
+                disabled
               />
             </div>
             <div class="inputBx">
@@ -124,37 +105,27 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="current_medication"
-                value={formValues.current_medication}
-                onChange={onInputChange}
+                value={medHistory.current_medication}
+                disabled
               />
             </div>
             <div class="inputBx">
               <span>Alcohol Consumption</span>
-              <Select
-                _focus={{ outline: "none" }}
-                border="1px solid #212121 !important"
-                value={formValues.alcohol_consumption}
+              <input
+                type="text"
                 name="alcohol_consumption"
-                onChange={onInputChange}
-              >
-                {frequency.map((freq) => {
-                  return <option>{freq}</option>;
-                })}
-              </Select>
+                value={medHistory.alcohol_consumption}
+                disabled
+              />
             </div>
             <div class="inputBx">
               <span>Tobacco Consumption</span>
-              <Select
-                _focus={{ outline: "none" }}
-                border="1px solid #212121 !important"
-                value={formValues.tobacco_consumption}
+              <input
+                type="text"
                 name="tobacco_consumption"
-                onChange={onInputChange}
-              >
-                {frequency.map((freq) => {
-                  return <option>{freq}</option>;
-                })}
-              </Select>
+                value={medHistory.tobacco_consumption}
+                disabled
+              />
             </div>
 
             <div class="inputBx">
@@ -162,23 +133,15 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               <input
                 type="text"
                 name="additional_notes"
-                value={formValues.additional_notes}
-                onChange={onInputChange}
+                value={medHistory.additional_notes}
+                disabled
               />
             </div>
           </div>
         </ModalBody>
-        <ModalFooter>
-          <div className="actionWrapper">
-            <button className="bookBtn">Submit</button>
-            <button className="cancelBtn" onClick={onClose}>
-              Clear
-            </button>
-          </div>
-        </ModalFooter>
       </ModalContent>
     </Modal>
   );
 };
 
-export default MedicalInfoForm;
+export default MedicalInfoView;

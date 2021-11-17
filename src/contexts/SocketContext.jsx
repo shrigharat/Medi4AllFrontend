@@ -21,6 +21,7 @@ const SocketProvider = ({ children }) => {
   const connectionRef = useRef();
 
   useEffect(() => {
+    const conRef = connectionRef;
     navigator.mediaDevices
       .getUserMedia({ audio: true, video: true })
       .then((currentStream) => {
@@ -35,6 +36,17 @@ const SocketProvider = ({ children }) => {
     socket.on("calluser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
+
+    return () => {
+      console.log("Call page unmounted");
+      navigator.mediaDevices
+        .getUserMedia({ video: true, audio: false })
+        .then((mediaStream) => {
+          mediaStream.getTracks().forEach(track => {
+            track.stop();
+          })
+        });
+    };
   }, []);
 
   const answerCall = () => {
@@ -77,8 +89,8 @@ const SocketProvider = ({ children }) => {
         duration: 3000,
         isClosable: true,
         variant: "left-accent",
-        position: "bottom-end"
-      })
+        position: "bottom-end",
+      });
       peer.signal(signal);
     });
 
