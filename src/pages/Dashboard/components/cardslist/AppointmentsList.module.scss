@@ -11,6 +11,7 @@
 }
 
 .appointments .info_card{
+  cursor: pointer;
   width: 100%;
   background: #fff;
   padding: .5rem 1rem;
@@ -65,12 +66,21 @@
     padding: .3rem .5rem;
     border-radius: 6px;
   }
-  .confirmation_status{
+  .action_container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .confirmation_status, .start_meet{
     font-size: .7rem;
     padding: .1rem .3rem;
     background-color: var(--darkMode800);
     color: var(--darkMode100);
     border-radius: 4px;
+  }
+  .start_meet{
+    padding: .1rem .6rem;
   }
 }
 

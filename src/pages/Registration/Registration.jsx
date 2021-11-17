@@ -5,12 +5,7 @@ import { Radio, RadioGroup } from "@chakra-ui/radio";
 import DoctorRegistration from "../../forms/doctorRegistration/DoctorRegistration";
 import InstituteRegistration from "../../forms/instituteRegistration/InstituteRegistration";
 import { AnimatePresence, motion } from "framer-motion";
-
-const userTypes = {
-  patient: "patient",
-  doctor: "doctor",
-  institute: "institute",
-};
+import userTypes from "../../utils/userTypes";
 
 const Registration = () => {
   const [userType, setUserType] = useState(userTypes.patient);

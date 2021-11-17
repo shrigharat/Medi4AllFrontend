@@ -13,6 +13,7 @@ const initialFormValues = {
   inborn_disease: "",
   current_medication: "",
   current_medication_description: "",
+  additional_notes: ""
 };
 
 const frequency = ["NA", "Daily", "Weekly", "Monthly", "Occasionally"];

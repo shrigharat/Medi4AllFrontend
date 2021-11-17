@@ -18,12 +18,15 @@ import {
 import "./Appointment.scss";
 import { useSelector } from "react-redux";
 import axiosInstance from "../../api/axiosInstance";
+import { addAppointment } from "../../redux/reducers/appointmentsSlice";
+import { useDispatch } from "react-redux";
 
 const Appointment = ({ onClose, isOpen }) => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [doctors, setDoctors] = useState([]);
   const [isFormSubmitting, setFormSubmitting] = useState(false);
   const { user } = useSelector((state) => state.authReducer);
+  const dispatch = useDispatch();
   const toast = useToast();
   console.log("Form values: ", formValues);
 
@@ -53,6 +56,7 @@ const Appointment = ({ onClose, isOpen }) => {
           patient_id: user._id,
         });
         showToast(toast, "Appointment request was sent", "success");
+        dispatch(addAppointment({ ...formValues, patient_id: user._id }));
         setFormSubmitting(false);
         setFormValues(initialFormValues);
         onClose();
@@ -109,17 +113,25 @@ const Appointment = ({ onClose, isOpen }) => {
                   }}
                 >
                   {doctors.map((doctor) => {
-                    const { first_name, last_name, _id, institute_id } = doctor;
+                    const {
+                      first_name,
+                      last_name,
+                      _id,
+                      institute_id,
+                      speciality,
+                    } = doctor;
                     return (
                       <option
+                        key={_id}
                         value={JSON.stringify({
                           id: _id,
                           first_name,
                           last_name,
                           institute_id,
+                          speciality,
                         })}
                       >
-                        {"Dr. " + first_name + " " + last_name}
+                        {`Dr. ${first_name} ${last_name} (${speciality})`}
                       </option>
                     );
                   })}

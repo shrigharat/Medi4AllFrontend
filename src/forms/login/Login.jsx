@@ -5,12 +5,8 @@ import axiosInstance from "../../api/axiosInstance";
 import { login } from "../../redux/reducers/authSlice";
 import { useDispatch } from "react-redux";
 import {Link, useHistory} from "react-router-dom";
+import userTypes from "../../utils/userTypes";
 
-const userTypes = {
-  patient: "patient",
-  doctor: "doctor",
-  institute: "institute",
-};
 
 const LoginForm = () => {
   const [userType, setUserType] = useState(userTypes.patient);
