@@ -1,22 +1,22 @@
 import React from "react";
-import "./LandingPage.scss";
+import classes from "./LandingPage.module.scss";
 
 const LandingPage = () => {
   return (
-    <>
-      <header>
-        <a href="#" class="logo">
+    <div className={classes.landing_page}>
+      <header className={classes.lp_header}>
+        <a href="#" className={classes.logo}>
           Medi4all
         </a>
-        <nav class="navbar">
+        <nav className={classes.navbar}>
           <a href="#home">Home</a>
           <a href="#aboutus">About Us</a>
           <a href="#services">Services</a>
           <a href="#login">Log In</a>
         </nav>
       </header>
-      <section class="home" id="home">
-        <div class="content">
+      <section className={classes.home} id="home">
+        <div className={classes.content}>
           <h3>FUTURE IS HERE,</h3>
           <h3>Manage Your Health</h3>
           <h3>All At One Place!</h3>
@@ -26,22 +26,22 @@ const LandingPage = () => {
             Now your online account is a powerful tool for managing every aspect
             of your health.
           </p>
-          <a href="#" class="btn">
+          <a href="#" className={classes.btn}>
             Register Now
           </a>
         </div>
-        <div class="image">
+        <div className={classes.image}>
           <img src="laptop_mockup.png" alt="" />
         </div>
       </section>
 
-      <section class="about" id="about">
-        <h1 class="heading">ABOUT US</h1>
-        <div class="column">
-          <div class="image">
+      <section className={classes.about} id="about">
+        <h1 className={classes.heading}>ABOUT US</h1>
+        <div className={classes.column}>
+          <div className={classes.image}>
             <img src="aboutus.jpeg" alt="" />
           </div>
-          <div class="content">
+          <div className={classes.content}>
             <h3>Remote Healthcare Platform</h3>
             <p>
               We at Medi4all remote healthcare system have a vision of a future
@@ -52,8 +52,8 @@ const LandingPage = () => {
               system.Whether you are patient living at home,a hospital or you
               are a care provider.Medi4all will surely make a difference to you.
             </p>
-            <div class="button">
-              <a href="#" class="btn">
+            <div className={classes.button}>
+              <a href="#" className={classes.btn}>
                 Read More
               </a>
             </div>
@@ -61,10 +61,10 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section class="services" id="services">
-        <h1 class="heading">SERVICES</h1>
-        <div class="box-container">
-          <div class="box">
+      <section className={classes.services} id="services">
+        <h1 className={classes.heading}>SERVICES</h1>
+        <div className={classes["box-container"]}>
+          <div className={classes.box}>
             <img src="tele-health.jpg" alt="" />
             <h3>Online Consultations</h3>
             <p>
@@ -73,11 +73,11 @@ const LandingPage = () => {
               magnam totam amet praesentium nesciunt? Facere, officia sapiente
               quam vero doloremque sunt?
             </p>
-            <a href="#" class="btn">
+            <a href="#" className={classes.btn}>
               Read More
             </a>
           </div>
-          <div class="box">
+          <div className={classes.box}>
             <img src="20170523-prescription.jpg" alt="" />
             <h3>Manage Prescriptions</h3>
             <p>
@@ -86,11 +86,11 @@ const LandingPage = () => {
               magnam totam amet praesentium nesciunt? Facere, officia sapiente
               quam vero doloremque sunt?
             </p>
-            <a href="#" class="btn">
+            <a href="#" className={classes.btn}>
               Read More
             </a>
           </div>
-          <div class="box">
+          <div className={classes.btn}>
             <img src="medical-records-waf.jpg" alt="" />
             <h3>Track Medical Records</h3>
             <p>
@@ -99,11 +99,11 @@ const LandingPage = () => {
               magnam totam amet praesentium nesciunt? Facere, officia sapiente
               quam vero doloremque sunt?
             </p>
-            <a href="#" class="btn">
+            <a href="#" className={classes.btn}>
               Read More
             </a>
           </div>
-          <div class="box">
+          <div className={classes.box}>
             <img src="medical-news.jpg" alt="" />
             <h3>Read Health Articles</h3>
             <p>
@@ -112,13 +112,13 @@ const LandingPage = () => {
               magnam totam amet praesentium nesciunt? Facere, officia sapiente
               quam vero doloremque sunt?
             </p>
-            <a href="#" class="btn">
+            <a href="#" className={classes.btn}>
               Read More
             </a>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

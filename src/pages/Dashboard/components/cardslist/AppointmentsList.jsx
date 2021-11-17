@@ -31,7 +31,7 @@ const AppointmentsList = () => {
     "Loading..."
   ) : (
     <>
-      <section className={classes.appointments}>
+      <div className={classes.appointments}>
         {appointments.map((appt) => (
           <article
             className={classes.info_card}
@@ -91,7 +91,7 @@ const AppointmentsList = () => {
             </div>
           </article>
         ))}
-      </section>
+      </div>
       {selectedAppt && (
         <AppointmentView
           appointment={selectedAppt}

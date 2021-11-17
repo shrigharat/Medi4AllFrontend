@@ -7,7 +7,7 @@ const DashboardHeader = () => {
   const { userType, user } = useSelector((state) => state.authReducer);
 
   return (
-    <section class="header">
+    <div class="header">
       <nav>
         <div class="sidebar-button">
           <img className="logoImg" src={Medi4allLogo} />
@@ -24,7 +24,7 @@ const DashboardHeader = () => {
           </span>
         </div>
       </nav>
-    </section>
+    </div>
   );
 };
 

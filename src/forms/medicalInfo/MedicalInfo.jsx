@@ -16,10 +16,15 @@ import {
 } from "./medInfoFormValues";
 import "./MedicalInfo.scss";
 import { Select } from "@chakra-ui/select";
+import { useHistory } from "react-router";
+import axiosInstance from "../../api/axiosInstance";
+import { useSelector } from "react-redux";
 
 const MedicalInfoForm = ({ onClose, isOpen }) => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [isFormSubmitting, setFormSubmitting] = useState(false);
+  const { user } = useSelector((state) => state.authReducer);
+  const history = useHistory();
   const toast = useToast();
   console.log("Form values: ", formValues);
 
@@ -30,6 +35,27 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
       return newValues;
     });
   };
+
+  const onSubmit = async () => {
+    try {
+      setFormSubmitting(true);
+      const response = await axiosInstance.put("/medhistory", {
+        ...formValues,
+        doctor_id: user._id,
+        doctor_info: {
+          speciality: user.speciality,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          id: user._id
+        }
+      });
+      setFormSubmitting(false);
+      history.push("/dashboard");
+    } catch (e) {
+      setFormSubmitting(false);
+    }
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -54,12 +80,12 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               />
             </div>
             <div class="inputBx">
-              <span>Hospital Registration Number</span>
+              <span>Doctor id</span>
               <input
                 type="text"
                 name="doctor_id"
-                value={formValues.doctor_id}
-                onChange={onInputChange}
+                value={user._id}
+                disabled
               />
             </div>
 
@@ -69,6 +95,15 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
                 type="text"
                 name="medical_condition"
                 value={formValues.medical_condition}
+                onChange={onInputChange}
+              />
+            </div>
+            <div class="inputBx">
+              <span>Condition description</span>
+              <input
+                type="text"
+                name="condition_description"
+                value={formValues.condition_description}
                 onChange={onInputChange}
               />
             </div>
@@ -129,11 +164,21 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
               />
             </div>
             <div class="inputBx">
+              <span>Prescription</span>
+              <input
+                type="text"
+                name="prescription"
+                value={formValues.prescription}
+                onChange={onInputChange}
+              />
+            </div>
+            <div class="inputBx">
               <span>Alcohol Consumption</span>
               <Select
                 _focus={{ outline: "none" }}
                 border="1px solid #212121 !important"
                 value={formValues.alcohol_consumption}
+                placeholder="Select frequency"
                 name="alcohol_consumption"
                 onChange={onInputChange}
               >
@@ -148,6 +193,7 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
                 _focus={{ outline: "none" }}
                 border="1px solid #212121 !important"
                 value={formValues.tobacco_consumption}
+                placeholder="Select frequency"
                 name="tobacco_consumption"
                 onChange={onInputChange}
               >
@@ -170,7 +216,7 @@ const MedicalInfoForm = ({ onClose, isOpen }) => {
         </ModalBody>
         <ModalFooter>
           <div className="actionWrapper">
-            <button className="bookBtn">Submit</button>
+            <button className="bookBtn" onClick={onSubmit}>Submit</button>
             <button className="cancelBtn" onClick={onClose}>
               Clear
             </button>
