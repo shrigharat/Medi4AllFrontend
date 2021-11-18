@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import { useToast } from "@chakra-ui/toast";
 
-const socket = io("https://medi4allbackend.herokuapp.com/");
+const socket = io("https://medi4allbackend-lean-eland-cc.eu-de.mybluemix.net/");
 
 const SocketContext = createContext();
 

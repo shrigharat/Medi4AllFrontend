@@ -14,15 +14,19 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/call">
-          <SocketProvider>
-            <CallPage />
-          </SocketProvider>
+          {userLoggedIn ? (
+            <SocketProvider>
+              <CallPage />
+            </SocketProvider>
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
         <Route exact path="/">
           {userLoggedIn ? <Dashboard /> : <Redirect to="/login" />}
         </Route>
         <Route exact path="/login">
-        {userLoggedIn ? <Dashboard /> : <LoginForm/> }
+          {userLoggedIn ? <Dashboard /> : <LoginForm />}
         </Route>
         <Route exact path="/registration">
           <Registration />
