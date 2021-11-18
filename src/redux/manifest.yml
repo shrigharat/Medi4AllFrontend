@@ -1,0 +1,10 @@
+---
+applications:
+- path: .
+  name: medi4allforntend
+  buildpack: nodejs_buildpack
+  memory: 256M
+  instances: 1
+  random-route: true
+  env:
+    env_type: production
