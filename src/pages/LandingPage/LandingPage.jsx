@@ -25,12 +25,15 @@ const LandingPage = () => {
           <a className={classes.nav_item} href="#services">
             Services
           </a>
-          <a className={classes.nav_item} href="#aboutus">
+          <a className={classes.nav_item} href="#about">
             About Us
           </a>
           <Link to="/login" className={classes.nav_item}>
             Log In
           </Link>
+          <a className={classes.nav_item} href="#lr_section">
+            Register
+          </a>
         </nav>
       </header>
       <section className={classes.home_banner} id="home">
@@ -59,7 +62,7 @@ const LandingPage = () => {
             <div className={classes.srvimg_container}>
               <img className={classes.service_img} src={TeleHealth} alt="" />
             </div>
-            <div className={classes.srv_imgoverlay}/>
+            <div className={classes.srv_imgoverlay} />
             <h3 className={classes.title}>Online Consultations</h3>
             <p className={classes.description}>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo,
@@ -79,7 +82,7 @@ const LandingPage = () => {
                 alt=""
               />
             </div>
-            <div className={classes.srv_imgoverlay}/>
+            <div className={classes.srv_imgoverlay} />
             <h3 className={classes.title}>Manage Prescriptions</h3>
             <p className={classes.description}>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo,
@@ -95,7 +98,7 @@ const LandingPage = () => {
             <div className={classes.srvimg_container}>
               <img className={classes.service_img} src={MedRecords} alt="" />
             </div>
-            <div className={classes.srv_imgoverlay}/>
+            <div className={classes.srv_imgoverlay} />
             <h3 className={classes.title}>Track Medical Records</h3>
             <p className={classes.description}>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo,
@@ -111,7 +114,7 @@ const LandingPage = () => {
             <div className={classes.srvimg_container}>
               <img className={classes.service_img} src={MedNews} alt="" />
             </div>
-            <div className={classes.srv_imgoverlay}/>
+            <div className={classes.srv_imgoverlay} />
             <h3 className={classes.title}>Read Health Articles</h3>
             <p className={classes.description}>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo,
@@ -126,27 +129,87 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section className={classes.about} id="about">
-        <h1 className={classes.heading}>ABOUT US</h1>
-        <div className={classes.column}>
-          <div className={classes.image}>
-            <img src="aboutus.jpeg" alt="" />
+      <section className={classes.about_us} id="about">
+        <div className={classes.aboutus_overlay} />
+        <div className={classes.content}>
+          <h1 className={classes.heading}>ABOUT US</h1>
+          <p className={classes.content_body}>
+            We at Medi4all remote healthcare system have a vision of a future in
+            which technology helps people to be less stressed about their
+            medical data in cases of emergency or critical time.We have set our
+            aim to make use technology to provide care for patients effectively.
+            We believe Medi4all will transform healthcare system.Whether you are
+            patient living at home,a hospital or you are a care
+            provider.Medi4all will surely make a difference to you.
+          </p>
+          <button className={classes.read_more_btn}>Read More</button>
+        </div>
+      </section>
+      <section className={classes.login_register} id="lr_section">
+        <h3 className={classes.lr_heading}>Get started with us</h3>
+        <div className={classes.lr_container}>
+          <div className={classes.lr_box}>
+            <div className={classes.lr_head}>For users</div>
+            <div className={classes.lr_content}>
+              Manage your health information from your account, available to you
+              at all times.
+            </div>
+            <div className={classes.lr_buttons}>
+              <button
+                onClick={() => history.push("/login")}
+                className={classes.lr_loginbtn}
+              >
+                Login
+              </button>
+              <button
+                onClick={() => history.push("/registration")}
+                className={classes.lr_regbtn}
+              >
+                Register
+              </button>
+            </div>
           </div>
-          <div className={classes.content}>
-            <h3>Remote Healthcare Platform</h3>
-            <p>
-              We at Medi4all remote healthcare system have a vision of a future
-              in which technology helps people to be less stressed about their
-              medical data in cases of emergency or critical time.We have set
-              our aim to make use technology to provide care for patients
-              effectively. We believe Medi4all will transform healthcare
-              system.Whether you are patient living at home,a hospital or you
-              are a care provider.Medi4all will surely make a difference to you.
-            </p>
-            <div className={classes.button}>
-              <a href="#" className={classes.btn}>
-                Read More
-              </a>
+          <div className={classes.lr_box}>
+            <div className={classes.lr_head}>For Doctors</div>
+            <div className={classes.lr_content}>
+              For doctors affiliated with institutions or having their own
+              clinics to manage appointments and hassle free access to a
+              patient's history.
+            </div>
+            <div className={classes.lr_buttons}>
+              <button
+                onClick={() => history.push("/login")}
+                className={classes.lr_loginbtn}
+              >
+                Login
+              </button>
+              <button
+                onClick={() => history.push("/registration")}
+                className={classes.lr_regbtn}
+              >
+                Register
+              </button>
+            </div>
+          </div>
+          <div className={classes.lr_box}>
+            <div className={classes.lr_head}>For Institutions</div>
+            <div className={classes.lr_content}>
+              For institutions to have a proper flow of information and to
+              manage and redirect appointments.
+            </div>
+            <div className={classes.lr_buttons}>
+              <button
+                onClick={() => history.push("/login")}
+                className={classes.lr_loginbtn}
+              >
+                Login
+              </button>
+              <button
+                onClick={() => history.push("/registration")}
+                className={classes.lr_regbtn}
+              >
+                Register
+              </button>
             </div>
           </div>
         </div>
