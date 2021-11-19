@@ -23,13 +23,13 @@ function App() {
           )}
         </Route>
         <Route exact path="/">
-          {userLoggedIn ? <Dashboard /> : <Redirect to="/login" />}
+          <LandingPage />
         </Route>
         <Route exact path="/login">
           {userLoggedIn ? <Dashboard /> : <LoginForm />}
         </Route>
         <Route exact path="/registration">
-          <Registration />
+          {userLoggedIn ? <Dashboard /> : <Registration />}
         </Route>
         <Route exact path="/dashboard">
           {userLoggedIn ? <Dashboard /> : <Redirect to="/login" />}
